@@ -1,0 +1,24 @@
+type Query {
+    manufacturers: [Manufacturer]
+    manufacturerById(id: ID!): Manufacturer
+}
+
+type Manufacturer {
+    id: ID!
+    companyName: String!
+    items: [Item]
+}
+
+type Item {
+    id: ID!
+    itemName: String!
+    itemType: String!
+    price: String!
+    quantity: Int!
+    manufacturer: Manufacturer
+}
+
+type User {
+    id: ID!
+    email: String!
+}

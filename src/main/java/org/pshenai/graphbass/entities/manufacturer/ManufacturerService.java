@@ -8,7 +8,7 @@ import java.util.UUID;
 @Service
 public class ManufacturerService {
 
-    private ManufacturerRepository repository;
+    private final ManufacturerRepository repository;
 
     public ManufacturerService(ManufacturerRepository repository) {
         this.repository = repository;
@@ -25,5 +25,9 @@ public class ManufacturerService {
 
     public void saveAll(List<ManufacturerEntity> entities) {
         repository.saveAll(entities);
+    }
+
+    public List<ManufacturerEntity> getAll() {
+        return repository.findAll();
     }
 }
