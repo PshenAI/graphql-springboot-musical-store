@@ -24,8 +24,7 @@ public class ManufacturerEntity {
     @OneToMany(mappedBy = "manufacturer", cascade = CascadeType.ALL)
     private List<ItemEntity> items = new ArrayList<>();
 
-    public ManufacturerEntity(String companyName, List<ItemEntity> items) {
+    public ManufacturerEntity(String companyName) {
         this.companyName = companyName;
-        this.items = items;
     }
 }

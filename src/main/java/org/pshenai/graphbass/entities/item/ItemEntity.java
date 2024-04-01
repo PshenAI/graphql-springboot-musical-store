@@ -26,10 +26,11 @@ public class ItemEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     private ManufacturerEntity manufacturer;
 
-    public ItemEntity(String itemName, ItemType itemType, String price, int quantity) {
+    public ItemEntity(String itemName, ItemType itemType, String price, int quantity, ManufacturerEntity manufacturer) {
         this.itemName = itemName;
         this.itemType = itemType;
         this.price = price;
         this.quantity = quantity;
+        this.manufacturer = manufacturer;
     }
 }

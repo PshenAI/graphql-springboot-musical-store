@@ -23,25 +23,25 @@ public class GraphbassApplication {
 	}
 
 	@Bean
-	ApplicationRunner applicationRunner(UserService userService, ItemService itemService, ManufacturerService manufacturerService) {
+	ApplicationRunner applicationRunner(UserService userService, ManufacturerService manufacturerService) {
 		return args -> {
 			UserEntity customer1 = new UserEntity("bassPlayer@gmail.com", "password1");
 			UserEntity customer2 = new UserEntity("drumPlayer@gmail.com", "password2");
 			userService.saveAll(List.of(customer1, customer2));
 
-			ItemEntity item1 = new ItemEntity("Ibanez Roadstar II", ItemType.INSTRUMENT, "300", 1);
-			ItemEntity item2 = new ItemEntity("Fender Precision Bass", ItemType.INSTRUMENT, "450", 1);
-			ItemEntity item3 = new ItemEntity("D'addario Bass Strings", ItemType.MISCELLANEOUS, "40", 1);
+			ManufacturerEntity manufacturer1 = new ManufacturerEntity("Ibanez");
+			ManufacturerEntity manufacturer2 = new ManufacturerEntity("Fender");
+			ManufacturerEntity manufacturer3 = new ManufacturerEntity("D'addario");
 
-			ManufacturerEntity manufacturer1 = new ManufacturerEntity("Ibanez", Collections.singletonList(item1));
-			ManufacturerEntity manufacturer2 = new ManufacturerEntity("Fender", Collections.singletonList(item2));
-			ManufacturerEntity manufacturer3 = new ManufacturerEntity("D'addario", Collections.singletonList(item3));
+			ItemEntity item1 = new ItemEntity("Ibanez Roadstar II", ItemType.INSTRUMENT, "300", 1, manufacturer1);
+			ItemEntity item2 = new ItemEntity("Fender Precision Bass", ItemType.INSTRUMENT, "450", 1, manufacturer2);
+			ItemEntity item3 = new ItemEntity("D'addario Bass Strings", ItemType.MISCELLANEOUS, "40", 1,manufacturer3);
+
+			manufacturer1.setItems(Collections.singletonList(item1));
+			manufacturer2.setItems(Collections.singletonList(item2));
+			manufacturer3.setItems(Collections.singletonList(item3));
+
 			manufacturerService.saveAll(List.of(manufacturer1, manufacturer2, manufacturer3));
-
-			item1.setManufacturer(manufacturer1);
-			item2.setManufacturer(manufacturer2);
-			item3.setManufacturer(manufacturer3);
-			itemService.saveAll(List.of(item1, item2, item3));
 		};
 	}
 

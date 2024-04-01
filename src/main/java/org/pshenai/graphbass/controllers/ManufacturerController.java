@@ -1,4 +1,4 @@
-package org.pshenai.graphbass;
+package org.pshenai.graphbass.controllers;
 
 import org.pshenai.graphbass.entities.manufacturer.ManufacturerEntity;
 import org.pshenai.graphbass.entities.manufacturer.ManufacturerService;

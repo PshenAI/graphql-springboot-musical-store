@@ -3,6 +3,18 @@ type Query {
     manufacturerById(id: ID!): Manufacturer
 }
 
+type Mutation {
+    addItem(item: ItemInput): Item
+}
+
+input ItemInput{
+    itemName: String!
+    itemType: String!
+    price: String!
+    quantity: Int!
+    manufacturerId: ID!
+}
+
 type Manufacturer {
     id: ID!
     companyName: String!
